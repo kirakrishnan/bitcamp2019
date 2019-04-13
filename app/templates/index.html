@@ -6,6 +6,13 @@
         <h1>Hello, {{ user.username }}!</h1>
         <form action="http://localhost:5000/result" method="POST">
             <p>salary: <input type="number" name="salary"/></p>
+            <p>state:
+                <select name="state">
+                    <option value="VA">VA</option>
+                    <option value="MD">MD</option>
+                    <option value="DC">DC</option>
+               </select>
+            </p>
             <p>401K: <input type="number" name="401k"/></p>
             <p>HSA: <input type="number" name="hsa"/></p>
             <p>FSA: <input type="number" name="fsa"/></p>
