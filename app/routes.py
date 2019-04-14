@@ -1,6 +1,6 @@
 from flask import render_template, request
 from app import app
-from .logic import salary_calculator
+from .logic import final_case
 
 @app.route('/')
 def index():
@@ -12,35 +12,29 @@ def index():
 def result():
     if request.method == 'POST':
         form_fields = request.form
-        salary = salary_calculator(form_fields)
-        result = {}
-        for k, v in form_fields.items():
-            result[k]=v
-        result["TAKEHOME"] = salary
+        salary = final_case(form_fields)
+
+        import matplotlib
+        matplotlib.use('TkAgg')
+        import matplotlib.pyplot as plt
+        plt.rcdefaults()
+        import numpy as np
+        import matplotlib.pyplot as plt
+
+        objects = ('Without', 'EmpMatch', 'Current', 'Increased by 3')
+        # objects = ('Without Contributions', 'employer match', 'Current Contributions', 'Increased Contributions')
+        y_pos = np.arange(len(objects))
+        performance = salary
+
+        plt.bar(y_pos, performance, align='center', alpha=0.5)
+        plt.xticks(y_pos, objects)
+        plt.ylabel('Usage')
+        plt.title('Smarter Investmenter Strategies')
+
+        plt.savefig('app/static/histogram.jpg')
+        plt.show()
+
+        result = {"a": 1, "b": 2}
         return render_template("result.html", result = result)
 
 
-import random
-from io import BytesIO
-# from StringIO import StringIO  # python 2.7x
-
-from flask import Flask, make_response
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-
-
-@app.route('/plot.png')
-def plot():
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-
-    xs = range(100)
-    ys = [random.randint(1, 50) for x in xs]
-    axis.plot(xs, ys)
-    canvas = FigureCanvas(fig)
-    output = BytesIO()
-    # output = StringIO()  # python 2.7x
-    canvas.print_png(output)
-    response = make_response(output.getvalue())
-    response.mimetype = 'image/png'
-    return response
