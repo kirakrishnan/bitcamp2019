@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>result page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+    </style>
 </head>
 <body>
-    <img src="/static/histogram.png">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Portfolio</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <img width="1800px" height="800px" src='/static/histogram.jpg' align="center">
+    <div class="container-fluid bg-3 text-center">
+        <div class="col-sm-2">
+            <form action = "http://localhost:5000/retirement" method="POST">
+            <input type="submit" value="retirement" style="width:400px;Height:50px;" />
+            </form>
+        </div>
+        <div class="col-sm-2">
+            <form action = "http://localhost:5000/hsa" method="POST">
+            <input type="submit" value="hsa" style="width:400px;Height:50px;" />
+            </form>
+        </div>
+        <div class="col-sm-2">
+            <form action = "http://localhost:5000/hsa" method="POST">
+            <input type="submit" value="fsa" style="width:400px;Height:50px;" />
+            </form>
+        </div>
+        <div class="col-sm-2">
+            <form action = "http://localhost:5000/shares" method="POST">
+            <input type="submit" value="shares"  style="width:400px;Height:50px;" />
+            </form>
+        </div>
+    </div>
+
+
+    <!--input type="image" value="hsa" src="/static/hsa.jpg" alt="submit Button" onMouseOver="this.src='submit1.jpg'">
+    <input type="image" value="fsa" src="/static/fsa.jpg" alt="submit Button" onMouseOver="this.src='submit1.jpg'">
+    <input type="image" value="shares" src="/static/shares.jpg" alt="submit Button" onMouseOver="this.src='submit1.jpg'-->
+
+    <!--input type="button" name="retirement" style="width:400px;Height:50px;" value="Submit" />
+    <input type="button" name="hsa" style="width:400px;Height:50px;" value="Submit" />
+    <input type="button" name="fsa" style="width:400px;Height:50px;" value="Submit" />
+    <input type="button" name="shares" style="width:400px;Height:50px;" value="Submit" /-->
 </body>
 </html>
