@@ -1,23 +1,90 @@
-<html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <body>
-        <h1>Hello, {{ user.username }}!</h1>
-        <form action="http://localhost:5000/result" method="POST">
-            <p>salary: <input type="number" name="salary"/></p>
-            <p>state:
-                <select name="state">
-                    <option value="VA">VA</option>
-                    <option value="MD">MD</option>
-                    <option value="DC">DC</option>
-               </select>
-            </p>
-            <p>401K: <input type="number" name="retirement"/></p>
-            <p>HSA: <input type="number" name="hsa"/></p>
-            <p>FSA: <input type="number" name="fsa"/></p>
-            <p>shares: <input type="number" name="shares"/></p>
-            <p><input type = "submit" value = "submit" /></p>
-        </form>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Portfolio</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<form action="http://localhost:5000/result" method="POST">
+    <div class="container text-center">
+        <h1><b>Salary:</b> <input type="number" name="salary" /></h1>
+    </div>
+    <br><br>
+ 
+        <div class="container-fluid bg-3 text-center">
+            <h3>Investments/contributions</h3><br>
+            <br><br>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-2">State:
+                    <select name="state" style="width:130px;Height:50px;">
+                        <option value="VA">VA</option>
+                        <option value="MD">MD</option>
+                        <option value="DC">DC</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    401K: <input type="number" name="retirement" style="width:130px;Height:50px;" />
+                </div>
+                <div class="col-sm-2">
+                    HSA:  <input type="number" name="hsa" style="width:130px;Height:50px;" />
+                </div>
+                <div class="col-sm-2">
+                    FSA:  <input type="number" name="fsa" style="width:130px;Height:50px;" />
+                </div>
+                <div class="col-sm-2">
+                    shares:   <input type="number" name="shares" style="width:130px;Height:50px;" />
+                </div>
+                <div class="col-sm-2">
+                    withholding:
+                    <select name="withholding" style="width:130px;Height:50px;">
+                        <option value="single">single</option>
+                        <option value="married-filing-jointly">Married Filing Jointly</option>
+                        <option value="married-filing-separately">Married Filing Separately</option>
+                        <option value="head-of-household">Head of Household</option>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <br><br>
+            <br><br>
+            <input type="submit" name="btnSubmit" style="width:400px;Height:50px;" value="Submit" />
+        </div><br>
+    </form>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <footer class="container-fluid text-center">
+    </footer>
+</body>
 </html>
