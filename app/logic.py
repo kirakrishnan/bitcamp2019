@@ -146,6 +146,8 @@ def salary_calculator(result):
 
 
 def final_case(form_fields):
+    print("from final case function")
+    print (form_fields)
     salary = int(form_fields['salary'])
     state = form_fields['state']
     withholding = form_fields['withholding']
@@ -154,10 +156,44 @@ def final_case(form_fields):
     fsa = int(form_fields['fsa'])
     shares = int(form_fields['shares'])
     without = salary_calculator({"salary": salary, "retirement": 0, "hsa": 0, "fsa": 0, "shares": 0, "state": state, "withholding": withholding })
-    empmatch = salary_calculator({"salary": salary, "retirement": 4, "hsa": 4, "fsa": 4, "shares": 2, "state": state, "withholding": withholding })
+    empmatch = salary_calculator({"salary": salary, "retirement": 6, "hsa": 4, "fsa": 3, "shares": 1, "state": state, "withholding": withholding })
     current = salary_calculator(form_fields)
     increased = salary_calculator({"salary": salary, "retirement": retirement+3, "hsa": hsa + 3, "fsa": fsa + 3, "shares": shares + 3, "state": state, "withholding": withholding })
+    only_ret = salary_calculator({"salary": salary, "retirement": 6, "hsa": 0, "fsa": 0, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    only_hsa = salary_calculator({"salary": salary, "retirement": 0, "hsa": 4, "fsa": 0, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    only_fsa = salary_calculator({"salary": salary, "retirement": 0, "hsa": 0, "fsa": 3, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    only_shares = salary_calculator({"salary": salary, "retirement": 0, "hsa": 0, "fsa": 0, "shares": 1, "state": state,
+                                  "withholding": withholding})
+    ret_hsa = salary_calculator({"salary": salary, "retirement": 6, "hsa": 4, "fsa": 0, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    ret_fsa = salary_calculator({"salary": salary, "retirement": 6, "hsa": 0, "fsa": 3, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    ret_shares = salary_calculator({"salary": salary, "retirement": 6, "hsa": 0, "fsa": 0, "shares": 1, "state": state,
+                                  "withholding": withholding})
+    hsa_fsa = salary_calculator({"salary": salary, "retirement": 0, "hsa": 4, "fsa": 3, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    hsa_shares = salary_calculator({"salary": salary, "retirement": 0, "hsa": 4, "fsa": 0, "shares": 1, "state": state,
+                                  "withholding": withholding})
+    fsa_shares = salary_calculator({"salary": salary, "retirement": 0, "hsa": 0, "fsa": 3, "shares": 1, "state": state,
+                                  "withholding": withholding})
+    ret_hsa_fsa = salary_calculator({"salary": salary, "retirement": 6, "hsa": 4, "fsa": 3, "shares": 0, "state": state,
+                                  "withholding": withholding})
+    ret_hsa_shares = salary_calculator({"salary": salary, "retirement": 6, "hsa": 4, "fsa": 0, "shares": 1, "state": state,
+                                  "withholding": withholding})
+    ret_fsa_shares = salary_calculator({"salary": salary, "retirement": 6, "hsa": 0, "fsa": 3, "shares": 1, "state": state,
+                                  "withholding": withholding})
+    hsa_fsa_shares = salary_calculator({"salary": salary, "retirement": 0, "hsa": 4, "fsa": 3, "shares": 1, "state": state,
+                                  "withholding": withholding})
 
-    return [without, empmatch, current, increased]
+    # return [without, empmatch, current, increased, only_ret, only_hsa, only_fsa, only_shares, ret_hsa, ret_fsa, ret_shares,
+    #         hsa_fsa, hsa_shares, fsa_shares, ret_hsa_fsa, ret_hsa_shares, ret_fsa_shares, ret_fsa_shares]
+
+    return {'Without': without, 'EmpMatch':empmatch, 'Current': current, 'Increased by 3': increased, 'Only 401k': only_ret, 'Only HSA': only_hsa,
+            'Only FSA': only_fsa, 'Only Shares': only_shares, '401k & HSA': ret_hsa, '401k & FSA': ret_fsa, '401k & Shares': ret_fsa,
+            'HSA & FSA': hsa_fsa, 'HSA & Shares': hsa_shares, 'FSA & Shares': fsa_shares, '401k,HSA,FSA': ret_hsa_fsa, '401k,HSA,Shares': ret_hsa_shares,
+            '401k,FSA,Shares': ret_fsa_shares, 'HSA,FSA,Shares': hsa_fsa_shares}
 
 # print (final_case(sal))
