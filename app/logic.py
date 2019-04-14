@@ -137,7 +137,27 @@ def salary_calculator(result):
     net_value = salary_inhand
     for benefit in [result['retirement'], result['hsa'], result['fsa'], result['shares']]:
         net_value = net_value + (int(result['salary']) * int(benefit) / 100)
+
+
     return net_value
 
 
 # print(salary_calculator(sal))
+
+
+def final_case(form_fields):
+    salary = int(form_fields['salary'])
+    state = form_fields['state']
+    withholding = form_fields['withholding']
+    retirement = int(form_fields['retirement'])
+    hsa = int(form_fields['hsa'])
+    fsa = int(form_fields['fsa'])
+    shares = int(form_fields['shares'])
+    without = salary_calculator({"salary": salary, "retirement": 0, "hsa": 0, "fsa": 0, "shares": 0, "state": state, "withholding": withholding })
+    empmatch = salary_calculator({"salary": salary, "retirement": 4, "hsa": 4, "fsa": 4, "shares": 2, "state": state, "withholding": withholding })
+    current = salary_calculator(form_fields)
+    increased = salary_calculator({"salary": salary, "retirement": retirement+3, "hsa": hsa + 3, "fsa": fsa + 3, "shares": shares + 3, "state": state, "withholding": withholding })
+
+    return [without, empmatch, current, increased]
+
+# print (final_case(sal))
